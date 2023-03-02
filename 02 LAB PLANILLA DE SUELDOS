@@ -1,0 +1,152 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+double totalGanado, haberBasico2, bonoAntiguedad, montoHorasExtras, bonos, AFP, totalPagado, IVA, input3;
+const double tresSalarioMinimo = 6366;
+void calculoHorasExtras(int horasExtras);
+void calculoAntiguedad (int antiguedad);
+string input;
+char input2;
+int input4;
+bool salir= false;
+struct informacion{
+    vector <string> nombre;
+    vector <string> apellido;
+    vector <string> nacionalidad;
+    vector <char>   sexo;
+    vector <string> cargo;
+    vector <double> haberBasico;
+    vector <int>    antiguedad;
+    vector <double> bonoAntiguedad;
+    vector <int>    horasExtras;
+    vector <double> montoHorasExtras;
+    vector <double> bonos;
+    vector <double> totalGanado;
+    vector <double> AFP;
+    vector <double> IVA;
+    vector <double> totalPagado;
+
+
+};
+int main() {
+    informacion user;
+    int eleccion;
+  do {
+    cout << "(1)Ingresar Informacion" << endl;
+    cout << "(2)Mostrar Informacion" << endl;
+    cout << "(3)salir" << endl;
+    cin >> eleccion;
+    switch(eleccion) {
+        case 1:
+            cout << "Ingrese el nombre del trabajador " << endl;
+            cin >> input;
+            user.nombre.push_back(input);
+
+            cout << "Ingrese el apellido del trabajador " << endl;
+            cin >> input;
+            user.apellido.push_back(input);
+
+            cout << "Ingrese la nacionalidad del trabajador " << endl;
+            cin >> input;
+            user.nacionalidad.push_back(input);
+
+            cout << "Ingrese el sexo del trabajador H para hombre y M para mujer" << endl;
+            cin >> input2;
+            user.sexo.push_back(input2);
+
+            cout << "Ingrese el cargo en la empresa del trabajador" << endl;
+            cin >> input;
+            user.cargo.push_back(input);
+
+            cout << "Ingrese el haber basico del trabajador" << endl;
+            cin >> input3;
+            haberBasico2 = input3;
+            user.haberBasico.push_back(input3);
+
+
+            cout << "Ingrese la antiguedad del trabajador" << endl;
+            cin >> input4;
+            user.antiguedad.push_back(input4);
+            calculoAntiguedad(input4);
+            user.bonoAntiguedad.push_back(bonoAntiguedad);
+
+            cout << "Ingrese las horas extras del trabajador" << endl;
+            cin >> input4;
+            user.horasExtras.push_back(input4);
+            calculoHorasExtras(input4);
+            user.montoHorasExtras.push_back(montoHorasExtras);
+
+            cout << "Ingrese la cantidad en bs de los bonos ganados por el trabajador" << endl;
+            cin >> input4;
+            user.bonos.push_back(input4);
+
+            totalGanado = haberBasico2 + bonoAntiguedad + montoHorasExtras + bonos;
+            user.totalGanado.push_back(totalGanado);
+
+            AFP = totalGanado * 0.1271;
+            user.AFP.push_back(AFP);
+            IVA = (2145 * 2) / 13;
+            user.IVA.push_back(IVA);
+
+            totalPagado = (totalGanado - AFP) - IVA;
+            user.totalPagado.push_back(totalPagado);
+            break;
+
+        case 2:
+            cout
+                    << "Nombre ----- Apellido ----- Nacionalidad ----- Sexo ------ Cargo ------ Haber Basico ------ Antiguedad ------ Bono Antiguedad ------ Horas Extras ----- Monto Horas Extras ------ Bonos ------ Total Ganado ------ AFP ----- IVA ------ Total Pagado -----"
+                    << endl;
+            for (int i = 0; i < user.nombre.size(); i++) {
+                cout << user.nombre[i] << " " << user.apellido[i] << " " << user.nacionalidad[i] << " " << user.sexo[i]
+                     << " " << user.cargo[i] << " " << user.haberBasico[i] << " " << user.antiguedad[i] << " "
+                     << user.bonoAntiguedad[i] << " "
+                     << user.horasExtras[i] << " " << user.bonos[i] << " " << user.totalGanado[i] << " " << user.AFP[i]
+                     << " " << user.IVA[i] << " " << user.totalPagado[i] << endl;
+            }
+            break;
+
+            case 3:
+        salir = true;
+        break;
+
+        default:
+            cout << "Opcion Invalida" << endl;
+
+    }
+
+        }while(!salir);
+
+
+    return 0;
+}
+void calculoHorasExtras(int horasExtras){
+    montoHorasExtras = (((haberBasico2/30)/8)*2)*horasExtras;
+}
+void calculoAntiguedad (int antiguedad){
+
+    if(antiguedad <2){
+        bonoAntiguedad = 0;
+    }
+    if(antiguedad >=2 && antiguedad <=4){
+        bonoAntiguedad= tresSalarioMinimo*0.05;
+    }
+    if(antiguedad >=5 && antiguedad <=7){
+        bonoAntiguedad= tresSalarioMinimo*0.11;
+    }
+    if(antiguedad >=8 && antiguedad <=10){
+        bonoAntiguedad= tresSalarioMinimo*0.18;
+    }
+    if(antiguedad >=11 && antiguedad <=14){
+        bonoAntiguedad= tresSalarioMinimo*0.26;
+    }
+    if(antiguedad >=15 && antiguedad <=19){
+        bonoAntiguedad= tresSalarioMinimo*0.34;
+    }
+    if(antiguedad >=20 && antiguedad <=24){
+        bonoAntiguedad= tresSalarioMinimo*0.42;
+    }
+    if(antiguedad >=25){
+        bonoAntiguedad= tresSalarioMinimo*0.5;
+    }
+
+}
