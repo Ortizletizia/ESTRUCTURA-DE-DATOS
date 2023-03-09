@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+#define N 30
+#define M 30
+ 
+void cargar(int mat[N][M], int n, int m){
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++){
+			cout<<"Introduzca elemento para mat["<<i<<"]["<<j<<"]: ";
+			cin>>mat[i][j];
+		}
+	}
+}
+void mostrar(int mat[N][M], int n, int m){
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++){
+			cout<<mat[i][j]<<" ";
+				}
+		cout<<endl;
+	}
+	cout<<endl;
+}
+//Matriz transpuesta
+void transponer (int A[N][M], int n, int m){
+	int i,j, aux;
+	for(i=0; i<n-1; i++){
+		for(j=i+1; j<m; j++){\
+			if(j>i){
+			aux=A[i][j];
+			A[i][j]=A[j][i];
+			A[j][i]= aux;
+			}}
+	}
+}
+//Suma de dos matrices y almacenarlos en una tercera
+void sumarMatrices (int A [N][M], int B [N][M], int n, int m, int C[N][M]){
+	int i,j;
+	for(i=0; i<n; i++){
+		for(j=0; j<m ; j++){
+			C[i][j]= A[i][j]+B[i][j];
+		}
+	}
+}
+//Multiplicacion de matrices
+void multiplicarMatrices(int A[N][M], int n1,int m1, int B[N][M],int n2, int m2, int C[N][M], int &n3, int &m3){
+	int i,j,k,acum=0;
+	for(i=0; i<n1; i++){
+		for(j=0; j<m2; j++){
+			acum=0;
+			for (k=0; k<m1 ;k++){
+				acum=acum + (A[i][j]*B[i][j]);
+				acum=acum + (A[i][k]*B[k][j]);
+			}
+			C[i][j]=acum;
+		}
