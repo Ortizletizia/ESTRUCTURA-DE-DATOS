@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int a= 2351, b=765, c=1234;
+    cout<<a;
+    cout.width(10);
+    cout<<endl;
+    cout<<a<<endl;
+    cout<<b<<endl;
+    cout<<setw(10)<<a<<setw(10)<<b<<endl;
+    cout<<setw(10)<<c<<endl;
+    
+    double f= 3.1415926535;
+    
+    cout<<setw(14)<<f<<endl;
+    cout.precision(9);
+    cout<<setw(14)<<f<<endl;
+    cout.precision(5);
+    cout<<setw(14)<<f<<endl;
+    
+return 0;
+    
+}
