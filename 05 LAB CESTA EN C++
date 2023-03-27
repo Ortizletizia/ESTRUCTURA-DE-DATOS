@@ -1,0 +1,17 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    char separador = ',';
+    string cesta; 
+    cout<<"Introduzca los productos de la cesta de la compra: ";
+    getline(cin, cesta);
+    for (size_t p = 0, q = 0; p != cesta.npos; p = q){
+        cout<<"LA LISTA DE COMPRA ES: ";
+        cout << cesta.substr(p + (p != 0), (q = cesta.find(separador, p + 1)) - p - (p != 0)) << endl;
+    }
+return 0;
+}
