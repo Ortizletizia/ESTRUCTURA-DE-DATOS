@@ -1,2 +1,0 @@
-cesta = input('Introduzca los productos de la cesta de la compra: ')
-print(cesta.replace(',', '\n'))
