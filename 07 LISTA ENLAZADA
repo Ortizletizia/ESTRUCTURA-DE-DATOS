@@ -1,0 +1,52 @@
+# Clase Nodo Lista
+class NodoLista(object):
+    valor, sig = None, None
+
+
+# Clase Lista Simplemente Enlazada
+class ListaSimple(object):
+    # Crear una Lista Vacía
+    def __init__(self):
+        self.inicio = None
+        self.size = 0
+
+    def insertar(self, dato):
+        nodo = NodoLista()
+        nodo.valor = dato
+        if self.inicio is None or self.inicio.valor > dato:
+            nodo.sig = self.inicio
+            self.inicio = nodo
+        else:
+            ant = self.inicio
+            act = self.inicio.sig
+            while act is not None and act.valor < dato:
+                ant = ant.sig
+                act = act.sig
+            nodo.sig = act
+            ant.sig = nodo
+        self.size += 1
+
+    def recorrerListaLigada(self):
+        actual = self.inicio
+
+        while actual:
+            valor = actual.valor
+            actual = actual.sig
+            yield valor
+
+
+numeros = ListaSimple()
+numeros.insertar(1)
+numeros.insertar(2)
+
+
+for val in numeros.recorrerListaLigada():
+    print(val)
+
+print()
+
+numeros.insertar(5)
+numeros.insertar(4)
+
+for val in numeros.recorrerListaLigada():
+    print(val)
