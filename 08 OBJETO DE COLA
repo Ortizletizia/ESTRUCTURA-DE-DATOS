@@ -1,0 +1,16 @@
+int main() {
+Cola miCola;
+miCola.encolar(10);
+miCola.encolar(20);
+miCola.encolar(30);
+cout << "El primer elemento de la cola es: " << miCola.frente() << endl;
+miCola.desencolar();
+cout << "El primer elemento de la cola después de desencolar es: " << miCola.frente() << endl;
+miCola.encolar(40);
+while (!miCola.vacia()) {
+cout << miCola.frente() << " ";
+miCola.desencolar();
+}
+cout << endl;
+return 0;
+}
