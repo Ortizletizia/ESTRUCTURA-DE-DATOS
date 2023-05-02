@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+class persona{
+    private:
+    string fechaNacimiento;
+    int carnet;
+    string nombre;
+    string nombre2;
+    string apellido1;
+    string appelido2;
+    string direccion;
+    string lugarDeNacimiento;
+    int telefono;
+    string genero;
+    double balance;
+    int cuenta;
+
+    public:
+    string obtenerNombreApellido(string nombre, string nombre2, string apellido1, string apellido2);
+    string obtenerCuenta(int cuenta, double balance);
+    string obtenerDireccion(string direccion);
+    string obtenerLugarNacimiento(string lugarNacimiento);
+    double obtenerCuenta(double cuenta);
+    double obtenerBalance(double balance);
+    string obtenerGenero(string genero);
+
+};
+class vendedor : public persona{
+    private:
+    double sumaBalance;
+    double oferta;
+    double tiempoDeVenta;
+
+    public:
+    double balanceDespuesDeTransaccion(double sumaBalance, double balance, int cuenta, double oferta);
+    double obtenerTiempoVenta(double tiempoVenta);
+
+
+};
+
+class comprador: public persona{
+
+    private:
+    double oferta;
+    double tiempoDeEntrega;
+    double diferenciaBalance;
+
+    public:
+    double balanceDespuesTransaccion(double diferenciaBalance, double balance, int cuenta, double oferta);
+    double obtenerTiempoVenta(double tiempoVenta);
+
+
+};
