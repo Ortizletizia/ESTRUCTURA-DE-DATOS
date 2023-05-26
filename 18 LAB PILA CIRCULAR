@@ -1,0 +1,80 @@
+#include <iostream>
+
+using namespace std;
+
+const int MAX_SIZE = 5;
+
+class CircularStack {
+private:
+    int top;
+    int stack[MAX_SIZE];
+
+public:
+    CircularStack() {
+        top = -1;
+    }
+
+    bool isEmpty() {
+        return (top == -1);
+    }
+
+    bool isFull() {
+        return (top == MAX_SIZE - 1);
+    }
+
+    void push(int data) {
+        if (isFull()) {
+            cout << "La pila está llena. No se puede agregar el elemento." << endl;
+            return;
+        }
+        top = (top + 1) % MAX_SIZE;
+        stack[top] = data;
+        cout << "Elemento " << data << " agregado a la pila." << endl;
+    }
+
+    void pop() {
+        if (isEmpty()) {
+            cout << "La pila está vacía. No se puede eliminar ningún elemento." << endl;
+            return;
+        }
+        cout << "Elemento " << stack[top] << " eliminado de la pila." << endl;
+        top = (top - 1 + MAX_SIZE) % MAX_SIZE;
+    }
+
+    void displayStack() {
+        if (isEmpty()) {
+            cout << "La pila está vacía." << endl;
+            return;
+        }
+        cout << "Elementos en la pila: ";
+        int i = top;
+        while (i != -1) {
+            cout << stack[i] << " ";
+            i = (i - 1 + MAX_SIZE) % MAX_SIZE;
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    CircularStack stack;
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+    stack.push(40);
+    stack.push(50);
+
+    stack.displayStack();
+
+    stack.pop();
+    stack.pop();
+
+    stack.displayStack();
+
+    stack.push(60);
+    stack.push(70);
+
+    stack.displayStack();
+
+    return 0;
+}
