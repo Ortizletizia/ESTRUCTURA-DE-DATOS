@@ -1,0 +1,66 @@
+#include <iostream>
+
+using namespace std;
+
+class nodo{
+    public:
+    int dato;
+    nodo*siguiente;
+};
+class dato{
+private:
+    nodo*inicio;
+public:
+    dato(){
+        inicio=NULL;
+    }
+
+    void encolar(int dato){
+        nodo*nuevo = new nodo;
+        nuevo->dato = dato;
+        nuevo->siguiente=inicio;
+        inicio=nuevo;
+    }
+    int desencolar(){
+    if (vacio()){
+
+        cout << "La lista esta vacia"<< endl;
+
+    }
+    int dato= inicio->dato;
+    nodo*aux = inicio;
+    inicio = inicio->siguiente;
+    delete aux;
+    return dato;
+
+    }
+
+    bool vacio(){
+        return (inicio==NULL);
+    };
+    bool lleno(){
+        nodo*prueba = new nodo;
+
+        if (prueba== NULL){
+
+            return true;
+
+        }
+        else{
+            delete prueba;
+            return false;
+        }
+    }
+
+
+};
+
+int main() {
+    dato lista;
+    lista.encolar(1);
+    lista.encolar(2);
+    lista.desencolar();
+    lista.desencolar();
+    cout << lista.desencolar();
+    return 0;
+}
