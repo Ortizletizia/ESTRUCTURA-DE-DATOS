@@ -1,0 +1,81 @@
+#include <iostream>
+#define MAX_SIZE 100
+
+using namespace std;
+
+class Queue {
+    private:
+        int queueArray[MAX_SIZE];
+        int front, rear;
+
+    public:
+        Queue() {
+            front = -1;
+            rear = -1;
+        }
+
+        bool isEmpty() {
+            return front == -1 && rear == -1;
+        }
+
+        bool isFull() {
+            return rear == MAX_SIZE - 1;
+        }
+
+        void enqueue(int element) {
+            if (isFull()) {
+                cout << "Error: La cola está llena." << endl;
+                return;
+            } else if (isEmpty()) {
+                front = 0;
+            }
+            rear++;
+            queueArray[rear] = element;
+            cout << "Elemento " << element << " insertado en la cola." << endl;
+        }
+
+        void dequeue() {
+            if (isEmpty()) {
+                cout << "Error: La cola está vacía." << endl;
+                return;
+            } else if (front == rear) {
+                front = -1;
+                rear = -1;
+            } else {
+                cout << "Elemento " << queueArray[front] << " eliminado de la cola." << endl;
+                front++;
+            }
+        }
+
+        void display() {
+            if (isEmpty()) {
+                cout << "La cola está vacía." << endl;
+                return;
+            }
+            cout << "Elementos en la cola: ";
+            for (int i = front; i <= rear; i++) {
+                cout << queueArray[i] << " ";
+            }
+            cout << endl;
+        }
+};
+
+int main() {
+    Queue queue;
+
+    queue.enqueue(10);
+    queue.enqueue(20);
+    queue.enqueue(30);
+    queue.display();
+
+    queue.dequeue();
+    queue.display();
+
+    queue.dequeue();
+    queue.display();
+
+    queue.dequeue();
+    queue.display();
+
+    return 0;
+}
