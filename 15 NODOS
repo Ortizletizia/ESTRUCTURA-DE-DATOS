@@ -1,0 +1,22 @@
+#include "Dato.h"
+    class Nodo {
+    public:
+        Dato dato;
+        Nodo* puntero;
+
+        Nodo() {
+            puntero = NULL;
+        }
+};
+class Dato
+{
+public:
+    double Codigo;
+    string Nombre;
+    string Carrera;
+    Dato() {
+        Codigo = 0;
+        Nombre = "Unknow";
+        Carrera = "Unknow";
+    }
+};
