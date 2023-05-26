@@ -1,0 +1,74 @@
+#include <iostream>
+#define MAX_SIZE 100
+
+using namespace std;
+
+class Stack {
+    private:
+        int stackArray[MAX_SIZE];
+        int top;
+
+    public:
+        Stack() {
+            top = -1;
+        }
+
+        bool isEmpty() {
+            return top == -1;
+        }
+
+        bool isFull() {
+            return top == MAX_SIZE - 1;
+        }
+
+        void push(int element) {
+            if (isFull()) {
+                cout << "Error: La pila está llena." << endl;
+                return;
+            }
+            top++;
+            stackArray[top] = element;
+            cout << "Elemento " << element << " insertado en la pila." << endl;
+        }
+
+        void pop() {
+            if (isEmpty()) {
+                cout << "Error: La pila está vacía." << endl;
+                return;
+            }
+            cout << "Elemento " << stackArray[top] << " eliminado de la pila." << endl;
+            top--;
+        }
+
+        void display() {
+            if (isEmpty()) {
+                cout << "La pila está vacía." << endl;
+                return;
+            }
+            cout << "Elementos en la pila: ";
+            for (int i = 0; i <= top; i++) {
+                cout << stackArray[i] << " ";
+            }
+            cout << endl;
+        }
+};
+
+int main() {
+    Stack stack;
+
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+    stack.display();
+
+    stack.pop();
+    stack.display();
+
+    stack.pop();
+    stack.display();
+
+    stack.pop();
+    stack.display();
+
+    return 0;
+}
